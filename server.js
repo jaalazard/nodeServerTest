@@ -4,7 +4,13 @@ const port = 8000;
 
 const requestHandler = (request, response) => {
     console.log(request.url);
-    response.end('hi');
+    if (request.url === '/') {
+        response.end('Vous êtes en page d\'accueil');
+    } else if (request.url === '/about') {
+        response.end('Vous ête sur la page "about"');
+    } else {
+        response.end('Default page, not "/", and not "/default" too');
+    }
 }
 
 const server = http.createServer(requestHandler);
